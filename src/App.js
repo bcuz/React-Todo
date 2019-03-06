@@ -23,14 +23,31 @@ class App extends React.Component {
     super();
     this.state = {
       todos: todos,
+      todo: ''
     }
+  }
+
+  handleSubmit = (e) => {
+    e.preventDefault()
+
+    let newTodo = {
+      task: 'Organize Garage',
+      id: 1528817077286,
+      completed: false
+    }
+
+    alert('hi')
+  }
+
+  changeHandler = (e) => {
+    this.setState({ todo: e.target.value });
   }
 
   render() {
     return (
       <div>
         <TodoList todos={this.state.todos} />
-        <TodoForm />
+        <TodoForm todo={this.state.todo} submit={this.handleSubmit} change={this.changeHandler} />
       </div>
     );
   }
