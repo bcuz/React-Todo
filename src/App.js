@@ -31,23 +31,31 @@ class App extends React.Component {
     e.preventDefault()
 
     let newTodo = {
-      task: 'Organize Garage',
-      id: 1528817077286,
+      task: this.state.todo,
+      id: Date.now(),
       completed: false
     }
 
-    alert('hi')
+    this.setState({ 
+      todos: [...this.state.todos, newTodo ],
+      todo: ''
+    });
+
   }
 
   changeHandler = (e) => {
     this.setState({ todo: e.target.value });
   }
 
+  clickHandler = (e) => {
+    this.setState({ todos: [] });
+  }
+
   render() {
     return (
       <div>
         <TodoList todos={this.state.todos} />
-        <TodoForm todo={this.state.todo} submit={this.handleSubmit} change={this.changeHandler} />
+        <TodoForm todo={this.state.todo} submit={this.handleSubmit} change={this.changeHandler} click={this.clickHandler} />
       </div>
     );
   }
