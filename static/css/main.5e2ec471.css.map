@@ -1,0 +1,1 @@
+{"version":3,"sources":["App.css"],"names":[],"mappings":"AAAA,KACE,cAAgB,CAGlB,aACE,cAAgB","file":"static/css/main.5e2ec471.css","sourcesContent":["body {\n  font-size: 18px;\n}\n\ninput, button {\n  font-size: 16px;\n}\n\n\n// WEBPACK FOOTER //\n// ./src/App.css"],"sourceRoot":""}
