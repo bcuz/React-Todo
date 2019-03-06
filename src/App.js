@@ -28,17 +28,18 @@ class App extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault()
 
-    let newTodo = {
-      task: this.state.todo,
-      id: Date.now(),
-      completed: false
+    if (this.state.todo !== '') {    
+      let newTodo = {
+        task: this.state.todo,
+        id: Date.now(),
+        completed: false
+      }
+  
+      this.setState({ 
+        todos: [...this.state.todos, newTodo ],
+        todo: ''
+      });
     }
-
-    this.setState({ 
-      todos: [...this.state.todos, newTodo ],
-      todo: ''
-    });
-
   }
 
   changeHandler = (e) => {
