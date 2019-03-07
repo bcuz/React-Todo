@@ -29,6 +29,8 @@ class App extends React.Component {
     e.preventDefault()
 
     if (this.state.todo !== '') {    
+
+      // use prevState here
       let newTodo = {
         task: this.state.todo,
         id: Date.now(),
@@ -52,10 +54,14 @@ class App extends React.Component {
     this.setState({ todos: [] });
   }
 
+  toggleItem = () => {
+    alert('hi')
+  }
+
   render() {
     return (
       <div>
-        <TodoList todos={this.state.todos} />
+        <TodoList todos={this.state.todos} toggleItem={this.toggleItem} />
         <TodoForm todo={this.state.todo} submit={this.handleSubmit} change={this.changeHandler} click={this.clickHandler} />
       </div>
     );
