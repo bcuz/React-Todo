@@ -35,10 +35,12 @@ class App extends React.Component {
         completed: false
       }
   
-      this.setState({ 
-        todos: [...this.state.todos, newTodo ],
+      this.setState( prevState => {
+        return { 
+        todos: [...prevState.todos, newTodo ],
         todo: ''
-      });
+      }
+      }      );
     }
   }
 
