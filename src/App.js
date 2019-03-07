@@ -54,8 +54,22 @@ class App extends React.Component {
     this.setState({ todos: [] });
   }
 
-  toggleItem = () => {
-    alert('hi')
+  toggleItem = id => {
+    this.setState(prevState => {
+      return {
+        todos: prevState.todos.map(task => {
+          if (task.id === id) {
+            return {
+              task: task.task,
+              id: task.id,
+              completed: !task.completed
+            };
+          } else {
+            return task;
+          }
+        })
+      };
+    });
   }
 
   render() {

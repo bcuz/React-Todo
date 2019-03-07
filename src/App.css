@@ -5,3 +5,11 @@ body {
 input, button {
   font-size: 16px;
 }
+
+.task {
+  max-width: 300px;
+}
+
+.completed {
+  text-decoration: line-through;
+}
