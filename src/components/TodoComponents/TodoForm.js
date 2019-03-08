@@ -2,12 +2,15 @@ import React from 'react';
 
 const TodoForm = props => {
   return (
-    <form onSubmit={props.submit} >
-      <input placeholder='...todo' type='text' name='todo' 
+    <form className="input-group" onSubmit={props.submit} >
+      <input className="form-control" placeholder='add item' type='text' name='todo' 
       value={props.todo}
       onChange={props.change} />
-      <button type='submit'>Add todo</button>
-      <button onClick={props.click} >Clear Completed</button>
+      <div class="input-group-append">
+
+        <button className="btn btn-outline-secondary" type='submit'>Add todo</button>
+        <button className="btn btn-outline-secondary" onClick={props.click} >Clear Completed</button>
+      </div>
     </form>
   );
 };

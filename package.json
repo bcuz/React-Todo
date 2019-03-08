@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://bcuz.github.io/React-Todo",
   "dependencies": {
+    "bootstrap": "^4.3.1",
     "gh-pages": "^2.0.1",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",

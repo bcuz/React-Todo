@@ -1,15 +1,20 @@
 body {
   font-size: 18px;
+  margin: 10px;
 }
 
-input, button {
-  font-size: 16px;
-}
-
-.task {
-  max-width: 300px;
+.list {
+  text-align: center;
 }
 
 .completed {
   text-decoration: line-through;
+}
+
+.container {
+  max-width: 500px;
+}
+
+.input-group {
+  margin-top: 10px;
 }
