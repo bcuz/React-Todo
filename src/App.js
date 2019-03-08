@@ -51,7 +51,14 @@ class App extends React.Component {
   }
 
   clickHandler = (e) => {
-    this.setState({ todos: [] });
+    this.setState( prevState => {
+      return { 
+        todos: prevState.todos.filter(task => {
+          return task.completed === false
+        })
+      }
+    }
+      );
   }
 
   toggleItem = id => {
@@ -59,14 +66,20 @@ class App extends React.Component {
       return {
         todos: prevState.todos.map(task => {
           if (task.id === id) {
+            // do it this way cuz we want
+            // a new arr of objs here.
+            
+            // task.completed = !task.completed
+            // ^ would result in an arr of undefineds
             return {
-              task: task.task,
-              id: task.id,
+              // task: task.task,
+              // id: task.id,
+              ...task,
               completed: !task.completed
             };
-          } else {
-            return task;
           }
+          
+          return task;
         })
       };
     });
