@@ -28,14 +28,16 @@ class App extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault()
 
-    if (this.state.todo !== '') {    
-      let newTodo = {
-        task: this.state.todo,
-        id: Date.now(),
-        completed: false
-      }
-  
+    if (this.state.todo !== '') {
+
       this.setState( prevState => {
+
+        let newTodo = {
+          task: prevState.todo,
+          id: Date.now(),
+          completed: false
+        }
+  
         return { 
         todos: [...prevState.todos, newTodo ],
         todo: ''
@@ -49,13 +51,48 @@ class App extends React.Component {
   }
 
   clickHandler = (e) => {
-    this.setState({ todos: [] });
+    this.setState( prevState => {
+      return { 
+        todos: prevState.todos.filter(task => {
+          return task.completed === false
+        })
+      }
+    }
+      );
+  }
+
+  // https://stackoverflow.com/questions/29810914/react-js-onclick-cant-pass-value-to-method
+  toggleItem = param => e => {
+    this.setState(prevState => {
+      return {
+        todos: prevState.todos.map(task => {
+          if (task.id === param) {
+            // do it this way cuz we want
+            // a new arr of objs here.
+            // and no mutating state
+            // https://stackoverflow.com/questions/42286442/how-to-set-specific-property-value-of-all-objects-in-a-javascript-object-array
+
+            // task.completed = !task.completed
+            // ^ would result in an arr of undefineds
+            return {
+              // more concise
+              ...task,
+              // task: task.task,
+              // id: task.id,
+              completed: !task.completed
+            };
+          }
+          
+          return task;
+        })
+      };
+    });
   }
 
   render() {
     return (
-      <div>
-        <TodoList todos={this.state.todos} />
+      <div className='container'>
+        <TodoList todos={this.state.todos} toggleItem={this.toggleItem} />
         <TodoForm todo={this.state.todo} submit={this.handleSubmit} change={this.changeHandler} click={this.clickHandler} />
       </div>
     );
